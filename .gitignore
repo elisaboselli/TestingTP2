@@ -58,6 +58,8 @@ pascaltds
 # generated files
 bin/
 gen/
+*/.metadata
+*/.recommenders
 
 # Local configuration file (sdk path, etc)
 local.properties
