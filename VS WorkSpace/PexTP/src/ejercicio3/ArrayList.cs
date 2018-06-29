@@ -40,9 +40,10 @@ namespace ArrayListProject
             return last;
         }
 
+        // FIX: Ahora retorna maxSize en lugar de last
         public int getMaxSize()
         {
-            return last;
+            return maxSize;
         }
 
         public void add(Object item, int position)
