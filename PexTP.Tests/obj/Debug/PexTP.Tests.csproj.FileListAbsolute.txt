@@ -1,0 +1,14 @@
+C:\Users\Wasini\Documents\GitHub\TestingTP2\PexTP.Tests\bin\Debug\PexTP.Tests.dll
+C:\Users\Wasini\Documents\GitHub\TestingTP2\PexTP.Tests\bin\Debug\PexTP.Tests.pdb
+C:\Users\Wasini\Documents\GitHub\TestingTP2\PexTP.Tests\bin\Debug\ConsoleApplication.exe
+C:\Users\Wasini\Documents\GitHub\TestingTP2\PexTP.Tests\bin\Debug\Microsoft.Pex.Framework.dll
+C:\Users\Wasini\Documents\GitHub\TestingTP2\PexTP.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Wasini\Documents\GitHub\TestingTP2\PexTP.Tests\bin\Debug\Microsoft.ExtendedReflection.Reasoning.dll
+C:\Users\Wasini\Documents\GitHub\TestingTP2\PexTP.Tests\bin\Debug\Microsoft.ExtendedReflection.dll
+C:\Users\Wasini\Documents\GitHub\TestingTP2\PexTP.Tests\bin\Debug\ConsoleApplication.pdb
+C:\Users\Wasini\Documents\GitHub\TestingTP2\PexTP.Tests\bin\Debug\Microsoft.Pex.Framework.xml
+C:\Users\Wasini\Documents\GitHub\TestingTP2\PexTP.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Wasini\Documents\GitHub\TestingTP2\PexTP.Tests\obj\Debug\PexTP.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Wasini\Documents\GitHub\TestingTP2\PexTP.Tests\obj\Debug\PexTP.Tests.rewritten
+C:\Users\Wasini\Documents\GitHub\TestingTP2\PexTP.Tests\obj\Debug\PexTP.Tests.dll
+C:\Users\Wasini\Documents\GitHub\TestingTP2\PexTP.Tests\obj\Debug\PexTP.Tests.pdb
