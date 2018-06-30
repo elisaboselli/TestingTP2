@@ -16,6 +16,14 @@
  */
 package ejercicio2.cachelist;
 
+import java.util.Set;
+import java.util.HashSet;
+
+import korat.finitization.IFinitization;
+
+import korat.finitization.IIntSet;
+import korat.finitization.IObjSet;
+import korat.finitization.impl.FinitizationFactory;
 
 /**
  * A <code>List</code> implementation that stores a cache of internal Node objects
@@ -42,10 +50,10 @@ package ejercicio2.cachelist;
 
 public class NodeCachingLinkedList {
 
-	private transient LinkedListNode header;
-	private transient int size;
+	private  LinkedListNode header;
+	private  int size;
 	@SuppressWarnings("unused")
-	private transient int modCount;
+	private  int modCount;
 
 	/**
 	 * The default value for {@link #maximumCacheSize}.
@@ -57,12 +65,12 @@ public class NodeCachingLinkedList {
 	 * Cached nodes are stored in a singly-linked list with
 	 * <code>next</code> pointing to the next element.
 	 */
-	protected /*@ nullable @*/transient LinkedListNode firstCachedNode;
+	protected /*@ nullable @*/ LinkedListNode firstCachedNode;
 
 	/**
 	 * The size of the cache.
 	 */
-	protected transient int cacheSize;
+	protected  int cacheSize;
 
 	/**
 	 * The maximum size of the cache.
@@ -84,10 +92,10 @@ public class NodeCachingLinkedList {
 		size = 0;
 		cacheSize = 0;
 		firstCachedNode = null;
-		DEFAULT_MAXIMUM_CACHE_SIZE = 20;
+		//DEFAULT_MAXIMUM_CACHE_SIZE = 20;
 		maximumCacheSize = DEFAULT_MAXIMUM_CACHE_SIZE;
-	}
-	*/
+	}*/
+	
 
 	//-----------------------------------------------------------------------
 	/**
@@ -389,6 +397,84 @@ public class NodeCachingLinkedList {
 		}
 		return node;
 	}
+	
+	public boolean repOK() {
+		//repOk de la lista doblemente encadenada
+		//es una lista doblemente encadenada circular con elemento fixticio
+		if (header == null) {
+			System.out.println("entro");
+			return false;
+		}
+		LinkedListNode nodeBefore = header;
+		//LinkedListNode node;
+		System.out.println("llego");
+
+        Set<LinkedListNode> visited = new HashSet<LinkedListNode>();
+		visited.add(header);
+		int total = 0;
+		for (LinkedListNode node = nodeBefore; node != header; node = node.next) {
+			System.out.println("lleggooo");
+			
+			if (node.previous == null || node.next == null) {
+				System.out.println("entro aca");
+				return false;
+			}
+			System.out.println("lleggoooooo   o");
+
+			if (node.previous != nodeBefore || !visited.add(node) || node.next==null)
+				return false;
+			total++;
+			nodeBefore = node;
+		}
+		if (header.previous != nodeBefore && nodeBefore.next != header) {
+			System.out.println("no circular");
+			return false;
+		}
+		if (total != size) {
+			System.out.println("distinto size");
+
+			return false;
+		}
+		//repOk de la lista cache
+		//es una lista simplemente encadenada
+		/*if (maximumCacheSize < cacheSize)
+			return false;
+		  LinkedListNode auxCacheNode = firstCachedNode;
+		  total = cacheSize;
+		  while(auxCacheNode !=null && total > 0) {
+			  if (auxCacheNode.previous!=null || auxCacheNode.value!=null || visited.contains(auxCacheNode)) {
+				  return false;
+			  }
+			  auxCacheNode = auxCacheNode.next;
+			  total--;
+		  }
+		  if (total!=0 || auxCacheNode!=null) {
+			  return false;
+		  }*/
+		  return true;
+	}
+	
+	  public static IFinitization finNodeCachingLinkedList(int numElem, int numCache, int sizeC, int sizeL ) {
+		    IFinitization f = FinitizationFactory.create(NodeCachingLinkedList.class);
+		    //creo nodos lo usos para la lista principal y la cache
+		    IObjSet elements = f.createObjSet(LinkedListNode.class, numElem + numCache, true);
+		    //esto parece q no funca
+		    //IObjSet values = f.createObjSet(Integer.class, 0 , true);// solo null ya que value  no incide en la estructura de la clase se rellena en la teoria
+		    IIntSet aux1 = f.createIntSet(sizeC, sizeC);
+		    //IIntSet aux2 = f.createIntSet(sizeL, sizeL);
+		    f.set("size", aux1);
+		    //f.set("cacheSize", aux2);
+		    f.set("header", elements);
+		    //f.set("firstCachedNode", elements);
+		    f.set("LinkedListNode.next", elements);
+		    f.set("LinkedListNode.previous", elements);
+		    //f.set("LinkedListNode.value", aux1);
+		    //f.set("modCount", aux1);*/
+
+		    //ver si hace falta ponerle algo a value:
+		    return f;
+		  }
+
 	//-----------------------------------------------------------------------
 
 }
