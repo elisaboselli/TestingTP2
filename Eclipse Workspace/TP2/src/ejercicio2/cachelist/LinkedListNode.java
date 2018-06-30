@@ -1,4 +1,5 @@
 package ejercicio2.cachelist;
+import java.io.Serializable;
 
 /**
  * A node within the linked list.
@@ -6,7 +7,9 @@ package ejercicio2.cachelist;
  * From Commons Collections 3.1, all access to the <code>value</code> property
  * is via the methods on this class.
  */
-public class LinkedListNode {
+public class LinkedListNode implements Serializable {
+	
+	private static final long serialVersionUID = 2L;
 
     /** A pointer to the node before this node */
     protected /*@ nullable @*/LinkedListNode previous;
