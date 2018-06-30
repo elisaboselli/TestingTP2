@@ -35,12 +35,14 @@ namespace ArrayListProject
             this.last = i - 1;
         }
 
+        [Pure]
         public int getLast()
         {
             return last;
         }
 
         // FIX: Ahora retorna maxSize en lugar de last
+        [Pure]
         public int getMaxSize()
         {
             return maxSize;
@@ -48,6 +50,10 @@ namespace ArrayListProject
 
         public void add(Object item, int position)
         {
+            Contract.Requires(position >= 0 && position < getMaxSize());
+            Contract.Ensures(getLast() == (Contract.OldValue<int>(getLast()) + 1));
+            Contract.Ensures(item == items[position]);
+     
             if (last + 1 == maxSize)
                 throw new InsufficientMemoryException();
 
@@ -58,11 +64,14 @@ namespace ArrayListProject
                 aux--;
             }
             items[position] = item;
-            last++;   
+            last++;
+    
         }
 
         public void remove(int position)
         {
+            Contract.Requires(position >= 0 && position <= getLast());
+            Contract.Ensures(getLast() == Contract.OldValue<int>(getLast()) - 1);
             int aux = last;
             while (aux < position)
             {
@@ -70,6 +79,14 @@ namespace ArrayListProject
                 aux++;
             }
             last--;
+            
+        }
+
+        // Invariante de representación de ArrayList
+        [ContractInvariantMethod]
+        private void RepOk()
+        {
+            Contract.Invariant(last >= -1 && last <= getMaxSize() && items != null);
         }
     }
 }
