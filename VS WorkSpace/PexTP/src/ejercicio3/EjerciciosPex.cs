@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics.Contracts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -48,6 +49,13 @@ namespace EjerciciosPex
         public static int cal(int month1, int day1, int month2,
             int day2, int year)
         {
+            Contract.Requires(month1 <= month2);
+            Contract.Requires(1 <= month1 && month1 <= 12,"Mes 1 en rango");
+            Contract.Requires(1 <= month2 && month2 <= 12,"Mes 2 en rango");
+            Contract.Requires(1 <= day1 && day1 <= 31,"Dia 1 en rango");
+            Contract.Requires(1 <= day2 && day2 <= 31,"Dia 2 en rango");
+            Contract.Requires(1 <= year && year <= 10000,"Año valido");
+            Contract.Ensures(Contract.Result<int>() <= 366 && 0 <= Contract.Result<int>(),"Distancia en dias entre fechas valida");
             //***********************************************************
             // Calculate the number of Days between the two given days in
             // the same year.
