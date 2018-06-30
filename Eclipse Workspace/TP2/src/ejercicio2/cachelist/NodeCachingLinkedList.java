@@ -401,75 +401,82 @@ public class NodeCachingLinkedList {
 	public boolean repOK() {
 		//repOk de la lista doblemente encadenada
 		//es una lista doblemente encadenada circular con elemento fixticio
-		if (header == null) {
+		if (header == null || header.previous==null || header.next==null) {
 			System.out.println("entro");
 			return false;
 		}
 		LinkedListNode nodeBefore = header;
 		//LinkedListNode node;
-		System.out.println("llego");
-
         Set<LinkedListNode> visited = new HashSet<LinkedListNode>();
 		visited.add(header);
 		int total = 0;
-		for (LinkedListNode node = nodeBefore; node != header; node = node.next) {
-			System.out.println("lleggooo");
-			
+		for (LinkedListNode node = nodeBefore.next; node != header; node = node.next) {	
+			System.out.println("chquando lista");
+
 			if (node.previous == null || node.next == null) {
-				System.out.println("entro aca");
+				System.out.println("node null");
 				return false;
 			}
-			System.out.println("lleggoooooo   o");
 
 			if (node.previous != nodeBefore || !visited.add(node) || node.next==null)
 				return false;
 			total++;
 			nodeBefore = node;
 		}
-		if (header.previous != nodeBefore && nodeBefore.next != header) {
+		if (header.previous != nodeBefore || nodeBefore.next != header) {
 			System.out.println("no circular");
 			return false;
 		}
 		if (total != size) {
-			System.out.println("distinto size");
-
+			System.out.println("distinto size" + total + "   "+size);
 			return false;
 		}
 		//repOk de la lista cache
 		//es una lista simplemente encadenada
-		/*if (maximumCacheSize < cacheSize)
+		if (maximumCacheSize < cacheSize)
 			return false;
 		  LinkedListNode auxCacheNode = firstCachedNode;
 		  total = cacheSize;
 		  while(auxCacheNode !=null && total > 0) {
-			  if (auxCacheNode.previous!=null || auxCacheNode.value!=null || visited.contains(auxCacheNode)) {
+			System.out.println("chquando cache");
+
+			  if (auxCacheNode.previous!=null ) {
+					System.out.println("distinto cache null");
 				  return false;
 			  }
 			  auxCacheNode = auxCacheNode.next;
 			  total--;
 		  }
 		  if (total!=0 || auxCacheNode!=null) {
+			System.out.println("distinto cache size" + total + "   "+size);
+
 			  return false;
-		  }*/
+		  }
+		System.out.println("joya");
+
 		  return true;
 	}
 	
 	  public static IFinitization finNodeCachingLinkedList(int numElem, int numCache, int sizeC, int sizeL ) {
 		    IFinitization f = FinitizationFactory.create(NodeCachingLinkedList.class);
 		    //creo nodos lo usos para la lista principal y la cache
-		    IObjSet elements = f.createObjSet(LinkedListNode.class, numElem + numCache, true);
+		    IObjSet elements = f.createObjSet(LinkedListNode.class, numElem + numCache +1 , true);
 		    //esto parece q no funca
-		    //IObjSet values = f.createObjSet(Integer.class, 0 , true);// solo null ya que value  no incide en la estructura de la clase se rellena en la teoria
-		    IIntSet aux1 = f.createIntSet(sizeC, sizeC);
-		    //IIntSet aux2 = f.createIntSet(sizeL, sizeL);
+		    //IObjSet values = f.createObjSet(LinkedListNode.class, 1 , true);// solo null ya que value  no incide en la estructura de la clase se rellena en la teoria
+		    IIntSet aux1 = f.createIntSet(0, sizeC);
+		    IIntSet aux2 = f.createIntSet(0, sizeL);
+		    IIntSet aux3 = f.createIntSet(sizeL, sizeL);
+		    //IIntSet aux1 = f.createIntSet(0, sizeC);
 		    f.set("size", aux1);
-		    //f.set("cacheSize", aux2);
+		    f.set("cacheSize", aux2);
+		    f.set("maximumCacheSize", aux3);
+		    f.set("Integer", aux3);
 		    f.set("header", elements);
-		    //f.set("firstCachedNode", elements);
+		    f.set("firstCachedNode", elements);
 		    f.set("LinkedListNode.next", elements);
 		    f.set("LinkedListNode.previous", elements);
-		    //f.set("LinkedListNode.value", aux1);
-		    //f.set("modCount", aux1);*/
+		    f.set("LinkedListNode.value", aux3);
+		    f.set("modCount", f.createIntSet(0, 0));
 
 		    //ver si hace falta ponerle algo a value:
 		    return f;
