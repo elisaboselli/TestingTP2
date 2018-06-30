@@ -15,6 +15,11 @@ namespace EjerciciosPex
 
         public static int patternIndex(String subject, String pattern)
         {
+            Contract.Requires(subject != null);
+            Contract.Requires(pattern != null);
+            Contract.Requires(pattern.Length <= subject.Length);
+            Contract.Ensures(Contract.Result<int>() == -1 || (0 <= Contract.Result<int>() && Contract.Result<int>() <= (subject.Length - pattern.Length)));
+            Contract.Ensures(Contract.Result<int>() != -1? Contract.Equals(subject.Substring(Contract.Result<int>(), pattern.Length), pattern) : true );
 	    // Post: if pattern is not a substring of subject, return -1
 	    //      else return (zero-based) index where the pattern (first)
 	    //      starts in subject 
@@ -24,6 +29,8 @@ namespace EjerciciosPex
             int subjectLen = subject.Length;
             int patternLen = pattern.Length;
 
+            //BUG: Cuando las 2 cadenas son vacias entra al ciclo ((iSub{0} + patterLen{0} - 1 < subjectLen{0}) == true)
+            //No puede obtener elementos de cadenas vacias
             while (isPat == false && iSub + patternLen - 1 < subjectLen)
             {
                 if (subject.ElementAt(iSub) == pattern.ElementAt(0))
@@ -67,6 +74,7 @@ namespace EjerciciosPex
             //***********************************************************
             int numDays;
 
+            // BUG: Cuando ambos meses son iguales y day2 < day1 retorna valores negativos
             if (month2 == month1) // in the same month
                 numDays = day2 - day1;
             else
