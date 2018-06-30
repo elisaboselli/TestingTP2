@@ -6,6 +6,7 @@ import java.util.Iterator;
 import ejercicio1.es.unileon.rnag.cubiga.datatypes.GeneticType;
 import ejercicio1.es.unileon.rnag.cubiga.gen.BitGen;
 import ejercicio1.es.unileon.rnag.cubiga.gen.Gen;
+import randoop.CheckRep;
 
 /**
  * Chromosome composed of bits.
@@ -101,5 +102,23 @@ public class BitChromosome extends Chromosome {
 		return new BitChromosome(this);
 	}
 
+	@CheckRep
+	public boolean repOK() {
+		if ((this.chromosome).equals(null))
+			return false;
+		
+		if ((this.geneticType).equals(null))
+			return false;
+		
+		if (this.chromosome.length < 1) 
+			return false;
+		
+		for(int i=0; i<this.length()-1; i++) {
+			if(!this.chromosome[i]==true && !this.chromosome[i]==false)
+				return false;
+		}
+		
+		return true;
+	}
 
 }

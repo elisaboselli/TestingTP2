@@ -6,7 +6,7 @@ package ejercicio2.cachelist;
  * From Commons Collections 3.1, all access to the <code>value</code> property
  * is via the methods on this class.
  */
-class LinkedListNode {
+public class LinkedListNode {
 
     /** A pointer to the node before this node */
     protected /*@ nullable @*/LinkedListNode previous;
