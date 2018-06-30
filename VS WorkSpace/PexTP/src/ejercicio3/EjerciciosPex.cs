@@ -30,7 +30,7 @@ namespace EjerciciosPex
             int patternLen = pattern.Length;
 
             //BUG: Cuando las 2 cadenas son vacias entra al ciclo ((iSub{0} + patterLen{0} - 1 < subjectLen{0}) == true)
-            //No puede obtener elementos de cadenas vacias
+            // No puede obtener elementos de cadenas vacias
             while (isPat == false && iSub + patternLen - 1 < subjectLen)
             {
                 if (subject.ElementAt(iSub) == pattern.ElementAt(0))
@@ -56,7 +56,7 @@ namespace EjerciciosPex
         public static int cal(int month1, int day1, int month2,
             int day2, int year)
         {
-            Contract.Requires(month1 <= month2);
+            Contract.Requires(month1 <= month2,"Mes1 < Mes2");
             Contract.Requires(1 <= month1 && month1 <= 12,"Mes 1 en rango");
             Contract.Requires(1 <= month2 && month2 <= 12,"Mes 2 en rango");
             Contract.Requires(1 <= day1 && day1 <= 31,"Dia 1 en rango");

@@ -72,6 +72,8 @@ namespace ArrayListProject
         {
             Contract.Requires(position >= 0 && position <= getLast());
             Contract.Ensures(getLast() == Contract.OldValue<int>(getLast()) - 1);
+            Contract.Ensures(Contract.OldValue<object>(items[position]) != items[position] || position == Contract.OldValue<int>(getLast()));
+            //BUG: No cicla correctamente -> intercambiar last por position
             int aux = last;
             while (aux < position)
             {
@@ -86,7 +88,7 @@ namespace ArrayListProject
         [ContractInvariantMethod]
         private void RepOk()
         {
-            Contract.Invariant(last >= -1 && last <= getMaxSize() && items != null);
+            Contract.Invariant(last >= -1 && last < getMaxSize() && items != null);
         }
     }
 }
