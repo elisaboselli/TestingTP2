@@ -1,0 +1,4 @@
+Excluir clases
+ejercicio1.*, ejercicio2.cachelist.*IntObject, ejercicio2.cachelist.*Deserializer,  ejercicio2.cachelist.*NCLLSupplier, ejercicio2.cachelist.*LinkedListNode
+Excluir metodos
+*createHeaderNode*, *repOK*, *finNodeCachingLinkedList*, *checkCache*, *Math_min, *removeIndex*, *checkLinkedList*, *getNode*, *removeAllNodes*, *shrinkCacheToMaximumSize*, *setMaximumCacheSize*, *getMaximumCacheSize*

@@ -273,8 +273,7 @@ public class NodeCachingLinkedList implements Serializable {
 	//-----------------------------------------------------------------------    
 
 	protected/*@ pure @*/boolean isEqualValue(Object value1, Object value2) {
-		return (value1 == value2 || (value1 == null ? false : value1
-				.equals(value2)));
+		return (value1 == value2 || (value1 == null ? false : value1.equals(value2)));
 	}
 
 	//-----------------------------------------------------------------------    

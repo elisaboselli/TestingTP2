@@ -1,5 +1,4 @@
-package ejercicio2;
-import ejercicio2.cachelist.NodeCachingLinkedList;
+package ejercicio2.cachelist;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
