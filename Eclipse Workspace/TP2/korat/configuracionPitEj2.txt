@@ -2,3 +2,6 @@ Excluir clases
 ejercicio1.*, ejercicio2.cachelist.*IntObject, ejercicio2.cachelist.*Deserializer,  ejercicio2.cachelist.*NCLLSupplier, ejercicio2.cachelist.*LinkedListNode
 Excluir metodos
 *createHeaderNode*, *repOK*, *finNodeCachingLinkedList*, *checkCache*, *Math_min, *removeIndex*, *checkLinkedList*, *getNode*, *removeAllNodes*, *shrinkCacheToMaximumSize*, *setMaximumCacheSize*, *getMaximumCacheSize*
+
+Configuracion ejercicio 1
+ejercicio1.es.unileon.rnag.cubiga.datatypes.*,*ListChromosome*,*.Chromosome*,*RangeChromosome*, *BitChromosome_ESTest_scaffolding*,ejercicio2.*,ejercicio1.es.unileon.rnag.cubiga.example.*, *GeneticAlgorithm*,ejercicio1.es.unileon.rnag.cubiga.gen.*, ejercicio1.es.unileon.rnag.cubiga.operator.*
