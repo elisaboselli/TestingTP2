@@ -31,6 +31,7 @@ public class BitChromosome extends Chromosome {
 		for (int i = 0; i < chromosomeLength; i++) {
 			boolean bit = Math.random() > 0.5; //If random > 0.5 the bit is 1 in other case is 0
 			bitSet[i] = bit;
+			//bitSet[i]= i%2 == 1;
 		}
 		this.chromosome = bitSet;
 		this.geneticType = type;
@@ -101,8 +102,12 @@ public class BitChromosome extends Chromosome {
 	public Chromosome copyChromosome(){
 		return new BitChromosome(this);
 	}
+	
+	public boolean equals(BitChromosome chromosome) {
+		return this.compareTo(chromosome)==0;
+	}
 
-	@CheckRep
+	/*@CheckRep
 	public boolean repOK() {
 		if ((this.chromosome).equals(null))
 			return false;
@@ -113,12 +118,13 @@ public class BitChromosome extends Chromosome {
 		if (this.chromosome.length < 1) 
 			return false;
 		
-		for(int i=0; i<this.length()-1; i++) {
-			if(!this.chromosome[i]==true && !this.chromosome[i]==false)
+		for (int i=0; i<this.chromosome.length; i++) {
+			if ((i % 2 == 1) != (this.chromosome[i])) {
 				return false;
+			}
 		}
 		
 		return true;
-	}
+	}*/
 
 }
