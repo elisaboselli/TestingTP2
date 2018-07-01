@@ -107,7 +107,7 @@ public class BitChromosome extends Chromosome {
 		return this.compareTo(chromosome)==0;
 	}
 
-	/*@CheckRep
+	@CheckRep
 	public boolean repOK() {
 		if ((this.chromosome).equals(null))
 			return false;
@@ -118,13 +118,13 @@ public class BitChromosome extends Chromosome {
 		if (this.chromosome.length < 1) 
 			return false;
 		
-		for (int i=0; i<this.chromosome.length; i++) {
+		/*for (int i=0; i<this.chromosome.length; i++) {
 			if ((i % 2 == 1) != (this.chromosome[i])) {
 				return false;
 			}
-		}
+		}*/
 		
 		return true;
-	}*/
+	}
 
 }
