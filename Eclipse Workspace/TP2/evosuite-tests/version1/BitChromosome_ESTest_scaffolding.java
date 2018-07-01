@@ -4,7 +4,7 @@
  * Fri Jun 29 17:45:56 GMT 2018
  */
 
-package ejercicio1.es.unileon.rnag.cubiga.chromosome;
+package version1;
 
 import org.evosuite.runtime.annotation.EvoSuiteClassExclude;
 import org.junit.BeforeClass;
