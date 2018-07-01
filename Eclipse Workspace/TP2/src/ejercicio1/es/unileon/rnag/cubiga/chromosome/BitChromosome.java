@@ -2,6 +2,7 @@ package ejercicio1.es.unileon.rnag.cubiga.chromosome;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 import ejercicio1.es.unileon.rnag.cubiga.datatypes.GeneticType;
 import ejercicio1.es.unileon.rnag.cubiga.gen.BitGen;
@@ -28,10 +29,11 @@ public class BitChromosome extends Chromosome {
 	public BitChromosome(int chromosomeLength, GeneticType type){
 		if (chromosomeLength < 1) throw new RuntimeException("BitChromosome must have a longitude greater than 0.");
 		boolean[] bitSet = new boolean[chromosomeLength];
+		//Random rand = new Random(7);
 		for (int i = 0; i < chromosomeLength; i++) {
 			boolean bit = Math.random() > 0.5; //If random > 0.5 the bit is 1 in other case is 0
+			//boolean bit = rand.nextBoolean();
 			bitSet[i] = bit;
-			//bitSet[i]= i%2 == 1;
 		}
 		this.chromosome = bitSet;
 		this.geneticType = type;
