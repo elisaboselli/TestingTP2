@@ -102,10 +102,6 @@ public class BitChromosome extends Chromosome {
 	public Chromosome copyChromosome(){
 		return new BitChromosome(this);
 	}
-	
-	public boolean equals(BitChromosome chromosome) {
-		return this.compareTo(chromosome)==0;
-	}
 
 	@CheckRep
 	public boolean repOK() {
@@ -117,12 +113,6 @@ public class BitChromosome extends Chromosome {
 		
 		if (this.chromosome.length < 1) 
 			return false;
-		
-		/*for (int i=0; i<this.chromosome.length; i++) {
-			if ((i % 2 == 1) != (this.chromosome[i])) {
-				return false;
-			}
-		}*/
 		
 		return true;
 	}
