@@ -4,6 +4,8 @@ using System.Linq;
 using System.Diagnostics.Contracts;
 using System.Text;
 using System.Threading.Tasks;
+using static Utils.DateValidator;
+using System.Text.RegularExpressions;
 
 namespace EjerciciosPex 
 {
@@ -15,11 +17,13 @@ namespace EjerciciosPex
 
         public static int patternIndex(String subject, String pattern)
         {
-            Contract.Requires(subject != null);
-            Contract.Requires(pattern != null);
-            Contract.Requires(pattern.Length <= subject.Length);
-            Contract.Ensures(Contract.Result<int>() == -1 || (0 <= Contract.Result<int>() && Contract.Result<int>() <= (subject.Length - pattern.Length)));
-            Contract.Ensures(Contract.Result<int>() != -1? Contract.Equals(subject.Substring(Contract.Result<int>(), pattern.Length), pattern) : true );
+            Contract.Requires(subject != null && subject != "","Subject no nulo ni cadena vacia");
+            Contract.Requires(pattern != null && pattern != "","Pattern no nulo ni cadena vacia");
+            Contract.Requires(pattern.Length <= subject.Length,"Patron de longitud menor o igual al sujeto");
+            Contract.Ensures(
+                (0 <= Contract.Result<int>() && Contract.Result<int>() <= (subject.Length - pattern.Length) && Contract.Equals(subject.Substring(Contract.Result<int>(), pattern.Length), pattern)) 
+                || (Contract.Result<int>() == -1 && !Regex.IsMatch(subject, pattern))
+                );
 	    // Post: if pattern is not a substring of subject, return -1
 	    //      else return (zero-based) index where the pattern (first)
 	    //      starts in subject 
@@ -29,8 +33,6 @@ namespace EjerciciosPex
             int subjectLen = subject.Length;
             int patternLen = pattern.Length;
 
-            //BUG: Cuando las 2 cadenas son vacias entra al ciclo ((iSub{0} + patterLen{0} - 1 < subjectLen{0}) == true)
-            // No puede obtener elementos de cadenas vacias
             while (isPat == false && iSub + patternLen - 1 < subjectLen)
             {
                 if (subject.ElementAt(iSub) == pattern.ElementAt(0))
@@ -48,7 +50,7 @@ namespace EjerciciosPex
                     }
                 }
                 iSub++;
-            }
+            }   
             return (rtnIndex);
         }
 
@@ -56,12 +58,14 @@ namespace EjerciciosPex
         public static int cal(int month1, int day1, int month2,
             int day2, int year)
         {
-            Contract.Requires(month1 <= month2,"Mes1 < Mes2");
-            Contract.Requires(1 <= month1 && month1 <= 12,"Mes 1 en rango");
-            Contract.Requires(1 <= month2 && month2 <= 12,"Mes 2 en rango");
-            Contract.Requires(1 <= day1 && day1 <= 31,"Dia 1 en rango");
-            Contract.Requires(1 <= day2 && day2 <= 31,"Dia 2 en rango");
-            Contract.Requires(1 <= year && year <= 10000,"Año valido");
+            Contract.Requires(1 <= month1 && month1 <= 12, "Mes 1 en rango");
+            Contract.Requires(1 <= month2 && month2 <= 12, "Mes 2 en rango");
+            Contract.Requires(1 <= day1 && day1 <= 31, "Dia 1 en rango");
+            Contract.Requires(1 <= day2 && day2 <= 31, "Dia 2 en rango");
+            Contract.Requires((month1 == month2 && day2 > day1) || month1 < month2,"Mismo mes con dias en orden, meses distintos con meses en orden");
+            Contract.Requires(verifyDate(day1, month1, year),"Fecha valida");
+            Contract.Requires(verifyDate(day2, month2, year),"Fecha valida");
+            Contract.Requires(1 <= year && year <= 10000,"Año en rango");
             Contract.Ensures(Contract.Result<int>() <= 366 && 0 <= Contract.Result<int>(),"Distancia en dias entre fechas valida");
             //***********************************************************
             // Calculate the number of Days between the two given days in

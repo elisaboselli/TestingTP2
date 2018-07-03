@@ -74,8 +74,8 @@ namespace ArrayListProject
             Contract.Ensures(getLast() == Contract.OldValue<int>(getLast()) - 1);
             Contract.Ensures(Contract.OldValue<object>(items[position]) != items[position] || position == Contract.OldValue<int>(getLast()));
             //BUG: No cicla correctamente -> intercambiar last por position
-            int aux = last;
-            while (aux < position)
+            int aux = position;
+            while (aux < last)
             {
                 items[aux] = items[aux + 1];
                 aux++;

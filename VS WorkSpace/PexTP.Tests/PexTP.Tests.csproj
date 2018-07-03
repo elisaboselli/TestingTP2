@@ -128,7 +128,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Pex.Framework">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Pex\Microsoft.Pex.Framework.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Pex\Microsoft.Pex.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
@@ -140,45 +140,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Compile Include="ArrayListTest.addTest.g.cs">
-      <DependentUpon>ArrayListTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ArrayListTest.addTest01.g.cs">
-      <DependentUpon>ArrayListTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ArrayListTest.addTest02.g.cs">
-      <DependentUpon>ArrayListTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ArrayListTest.addTest03.g.cs">
-      <DependentUpon>ArrayListTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ArrayListTest.addTest04.g.cs">
-      <DependentUpon>ArrayListTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ArrayListTest.addTest05.g.cs">
-      <DependentUpon>ArrayListTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="ArrayListTest.cs" />
-    <Compile Include="ArrayListTest.removeTest.g.cs">
-      <DependentUpon>ArrayListTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ArrayListTest.removeTest01.g.cs">
-      <DependentUpon>ArrayListTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ArrayListTest.removeTest02.g.cs">
-      <DependentUpon>ArrayListTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ArrayListTest.removeTest03.g.cs">
-      <DependentUpon>ArrayListTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EjerciciosPexTest.calTest.g.cs">
-      <DependentUpon>EjerciciosPexTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="EjerciciosPexTest.cs" />
     <Compile Include="EjerciciosPexTest.patternIndexTest.g.cs">
-      <DependentUpon>EjerciciosPexTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EjerciciosPexTest.patternIndexTest01.g.cs">
       <DependentUpon>EjerciciosPexTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Factories\ArrayListFactory.cs" />
