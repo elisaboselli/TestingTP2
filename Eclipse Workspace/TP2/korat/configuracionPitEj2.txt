@@ -1,22 +1,3 @@
-Metodos que utiliza add en NodeCacheLinkedList
-add ok
-addLast ok
-addNodeBefore ok
-createNode ok
-getNodeFromCache ok
-super_createNode ok
-isCacheFull ok
-addNode ok
-
-Metodos que utliza remove en NodeCacheLindekList
-remove ok
-isEqualValue ok
-removeNode ok
-super_removeNode ok
-addNodeToCache ok
-isCacheFull ok
-
-
 Excluir clases
 ejercicio1.*, ejercicio2.cachelist.*IntObject, ejercicio2.cachelist.*Deserializer,  ejercicio2.cachelist.*NCLLSupplier, ejercicio2.cachelist.*LinkedListNode
 Excluir metodos
