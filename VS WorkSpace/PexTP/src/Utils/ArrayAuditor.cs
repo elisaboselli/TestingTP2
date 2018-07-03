@@ -21,17 +21,6 @@ namespace PexTP.src.Utils
             return counter;
         }
 
-        public static int countItems(ArrayList list, object item)
-        {
-            int counter = 0;
-            foreach(object o in list)
-            {
-                if (o == null)
-                    counter += item == null ? 1 : 0;
-                else
-                    counter += o.Equals(item) ? 1 : 0;
-            }
-            return counter;
-        }
+      
     }
 }

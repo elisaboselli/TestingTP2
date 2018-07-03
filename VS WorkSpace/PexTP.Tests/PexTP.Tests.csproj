@@ -140,6 +140,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="ArrayListTest.addTest.g.cs">
+      <DependentUpon>ArrayListTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="ArrayListTest.cs" />
     <Compile Include="ArrayListTest.removeTest.g.cs">
       <DependentUpon>ArrayListTest.cs</DependentUpon>

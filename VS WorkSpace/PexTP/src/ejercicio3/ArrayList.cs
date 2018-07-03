@@ -8,7 +8,7 @@ using static PexTP.src.Utils.ArrayAuditor;
 
 namespace ArrayListProject
 {
-    public class ArrayList : IEnumerable
+    public class ArrayList
     {
         private static int maxSize = 10;
         private Object[] items;
@@ -79,8 +79,7 @@ namespace ArrayListProject
         {
             Contract.Requires(position >= 0 && position <= getLast());
             Contract.Ensures(getLast() == Contract.OldValue<int>(getLast()) - 1);
-            //NO TOMA BIEN OldValue DE object[]
-            Contract.Ensures(Contract.OldValue<object>(get(position)) != get(position) || position == Contract.OldValue<int>(getLast()));
+          // Contract.Ensures(Contract.OldValue<object[]>(items)[position] != items[position] || position == Contract.OldValue<int>(getLast()));
            // Contract.Ensures(
            //     countItems(Contract.OldValue<Object[]>(getItems()),Contract.OldValue<object>(items[position]), Contract.OldValue<int>(getLast())) 
            //     >
@@ -102,14 +101,6 @@ namespace ArrayListProject
         private void RepOk()
         {
             Contract.Invariant(last >= -1 && last < getMaxSize() && items != null);
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            for(int i = 0;i < last; i++)
-            {
-                yield return items[i];
-            }
         }
 
     }
