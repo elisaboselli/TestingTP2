@@ -141,6 +141,9 @@
   <ItemGroup />
   <ItemGroup>
     <Compile Include="ArrayListTest.cs" />
+    <Compile Include="ArrayListTest.removeTest.g.cs">
+      <DependentUpon>ArrayListTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="EjerciciosPexTest.cs" />
     <Compile Include="EjerciciosPexTest.patternIndexTest.g.cs">
       <DependentUpon>EjerciciosPexTest.cs</DependentUpon>

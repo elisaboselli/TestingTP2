@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics.Contracts;
 using System.Collections;
+using static PexTP.src.Utils.ArrayAuditor;
 
 namespace ArrayListProject
 {
-    public class ArrayList
+    public class ArrayList : IEnumerable
     {
         private static int maxSize = 10;
         private Object[] items;
         private int last = -1;
+        internal object[] getItem;
 
         public ArrayList()
         {
@@ -41,11 +43,16 @@ namespace ArrayListProject
             return last;
         }
 
-        // FIX: Ahora retorna maxSize en lugar de last
         [Pure]
         public int getMaxSize()
         {
             return maxSize;
+        }
+
+        [Pure]
+        public object get(int index)
+        {
+            return items[index];
         }
 
         public void add(Object item, int position)
@@ -72,8 +79,14 @@ namespace ArrayListProject
         {
             Contract.Requires(position >= 0 && position <= getLast());
             Contract.Ensures(getLast() == Contract.OldValue<int>(getLast()) - 1);
-            Contract.Ensures(Contract.OldValue<object>(items[position]) != items[position] || position == Contract.OldValue<int>(getLast()));
-            //BUG: No cicla correctamente -> intercambiar last por position
+            //NO TOMA BIEN OldValue DE object[]
+            Contract.Ensures(Contract.OldValue<object>(get(position)) != get(position) || position == Contract.OldValue<int>(getLast()));
+           // Contract.Ensures(
+           //     countItems(Contract.OldValue<Object[]>(getItems()),Contract.OldValue<object>(items[position]), Contract.OldValue<int>(getLast())) 
+           //     >
+           //     countItems(items,Contract.OldValue<Object[]>(getItems())[position], getLast()),
+           //     "Decrece la cantidad del elemento removido en el arreglo");
+
             int aux = position;
             while (aux < last)
             {
@@ -81,7 +94,7 @@ namespace ArrayListProject
                 aux++;
             }
             last--;
-            
+
         }
 
         // Invariante de representación de ArrayList
@@ -90,5 +103,14 @@ namespace ArrayListProject
         {
             Contract.Invariant(last >= -1 && last < getMaxSize() && items != null);
         }
+
+        public IEnumerator GetEnumerator()
+        {
+            for(int i = 0;i < last; i++)
+            {
+                yield return items[i];
+            }
+        }
+
     }
 }
