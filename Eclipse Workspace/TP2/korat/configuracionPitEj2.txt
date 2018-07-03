@@ -1,7 +1,27 @@
+Metodos que utiliza add en NodeCacheLinkedList
+add ok
+addLast ok
+addNodeBefore ok
+createNode ok
+getNodeFromCache ok
+super_createNode ok
+isCacheFull ok
+addNode ok
+
+Metodos que utliza remove en NodeCacheLindekList
+remove ok
+isEqualValue ok
+removeNode ok
+super_removeNode ok
+addNodeToCache ok
+isCacheFull ok
+
+
 Excluir clases
 ejercicio1.*, ejercicio2.cachelist.*IntObject, ejercicio2.cachelist.*Deserializer,  ejercicio2.cachelist.*NCLLSupplier, ejercicio2.cachelist.*LinkedListNode
 Excluir metodos
-*createHeaderNode*, *repOK*, *finNodeCachingLinkedList*, *checkCache*, *Math_min, *removeIndex*, *checkLinkedList*, *getNode*, *removeAllNodes*, *shrinkCacheToMaximumSize*, *setMaximumCacheSize*, *getMaximumCacheSize*
+*createHeaderNode*, *repOK*, *finNodeCachingLinkedList*, *contains*, *indexOf*, *checkCache*, *Math_min, *removeIndex*, *checkLinkedList*, *getNode*, *removeAllNodes*, *shrinkCacheToMaximumSize*, *setMaximumCacheSize*, *getMaximumCacheSize*
+
 
 Configuracion ejercicio 1
 ejercicio1.es.unileon.rnag.cubiga.datatypes.*,*ListChromosome*,*.Chromosome*,*RangeChromosome*, *BitChromosome_ESTest_scaffolding*,ejercicio2.*,ejercicio1.es.unileon.rnag.cubiga.example.*, *GeneticAlgorithm*,ejercicio1.es.unileon.rnag.cubiga.gen.*, ejercicio1.es.unileon.rnag.cubiga.operator.*

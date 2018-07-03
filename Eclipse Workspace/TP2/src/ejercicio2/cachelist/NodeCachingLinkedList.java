@@ -279,8 +279,7 @@ public class NodeCachingLinkedList implements Serializable {
 	//-----------------------------------------------------------------------    
 
 	public boolean add(Object value) {
-		addLast(value);
-		return true;
+		return addLast(value);
 	}
 
 	//-----------------------------------------------------------------------    
