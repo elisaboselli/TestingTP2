@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ej3", "ej3.csproj", "{629E9F79-3153-4055-9D53-B61A0DFE2D9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ej3.Tests", "..\ej3.Tests\ej3.Tests.csproj", "{A3B11AA5-F4C2-4110-A6F7-6F37E3DA3782}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{629E9F79-3153-4055-9D53-B61A0DFE2D9B}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{629E9F79-3153-4055-9D53-B61A0DFE2D9B}.Debug|x86.ActiveCfg = Debug|x86
+		{629E9F79-3153-4055-9D53-B61A0DFE2D9B}.Debug|x86.Build.0 = Debug|x86
+		{629E9F79-3153-4055-9D53-B61A0DFE2D9B}.Release|Any CPU.ActiveCfg = Release|x86
+		{629E9F79-3153-4055-9D53-B61A0DFE2D9B}.Release|x86.ActiveCfg = Release|x86
+		{629E9F79-3153-4055-9D53-B61A0DFE2D9B}.Release|x86.Build.0 = Release|x86
+		{A3B11AA5-F4C2-4110-A6F7-6F37E3DA3782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3B11AA5-F4C2-4110-A6F7-6F37E3DA3782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3B11AA5-F4C2-4110-A6F7-6F37E3DA3782}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A3B11AA5-F4C2-4110-A6F7-6F37E3DA3782}.Debug|x86.Build.0 = Debug|Any CPU
+		{A3B11AA5-F4C2-4110-A6F7-6F37E3DA3782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3B11AA5-F4C2-4110-A6F7-6F37E3DA3782}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3B11AA5-F4C2-4110-A6F7-6F37E3DA3782}.Release|x86.ActiveCfg = Release|Any CPU
+		{A3B11AA5-F4C2-4110-A6F7-6F37E3DA3782}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
