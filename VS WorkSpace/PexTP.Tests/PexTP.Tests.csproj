@@ -127,6 +127,10 @@
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ExtendedReflection.Reasoning, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Pex\Microsoft.ExtendedReflection.Reasoning.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Pex.Framework">
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Pex\Microsoft.Pex.Framework.dll</HintPath>
     </Reference>
@@ -140,9 +144,15 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="ArrayListTest.addTest.g.cs">
+      <DependentUpon>ArrayListTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="ArrayListTest.cs" />
     <Compile Include="ArrayListTest.removeTest.g.cs">
       <DependentUpon>ArrayListTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EjerciciosPexTest.calTest.g.cs">
+      <DependentUpon>EjerciciosPexTest.cs</DependentUpon>
     </Compile>
     <Compile Include="EjerciciosPexTest.cs" />
     <Compile Include="EjerciciosPexTest.patternIndexTest.g.cs">

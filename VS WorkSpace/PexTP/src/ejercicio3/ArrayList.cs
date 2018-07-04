@@ -57,10 +57,11 @@ namespace ArrayListProject
 
         public void add(Object item, int position)
         {
-            Contract.Requires(position >= 0 && position < getMaxSize());
+            Contract.Requires((getLast() == -1 && position == 0) || (position >= 0 && position <= getLast()));
             Contract.Ensures(getLast() == (Contract.OldValue<int>(getLast()) + 1));
             Contract.Ensures(item == items[position]);
-     
+            Contract.Ensures(countItems(this, item) > Contract.OldValue<int>(countItems(this, item)));
+
             if (last + 1 == maxSize)
                 throw new InsufficientMemoryException();
 
@@ -77,15 +78,10 @@ namespace ArrayListProject
 
         public void remove(int position)
         {
+            Contract.Requires(getLast() != -1);
             Contract.Requires(position >= 0 && position <= getLast());
             Contract.Ensures(getLast() == Contract.OldValue<int>(getLast()) - 1);
-            //NO TOMA BIEN OldValue DE object[]
-            Contract.Ensures(Contract.OldValue<object>(get(position)) != get(position) || position == Contract.OldValue<int>(getLast()));
-           // Contract.Ensures(
-           //     countItems(Contract.OldValue<Object[]>(getItems()),Contract.OldValue<object>(items[position]), Contract.OldValue<int>(getLast())) 
-           //     >
-           //     countItems(items,Contract.OldValue<Object[]>(getItems())[position], getLast()),
-           //     "Decrece la cantidad del elemento removido en el arreglo");
+            Contract.Ensures(Contract.OldValue<int>(countItems(this,get(position))) > countItems(this, Contract.OldValue<object>(get(position))));
 
             int aux = position;
             while (aux < last)
@@ -106,7 +102,7 @@ namespace ArrayListProject
 
         public IEnumerator GetEnumerator()
         {
-            for(int i = 0;i < last; i++)
+            for(int i = 0;i <= last; i++)
             {
                 yield return items[i];
             }
