@@ -59,6 +59,7 @@ pascaltds
 bin/
 */.metadata
 */.recommenders
+*evosuite-report
 
 # Local configuration file (sdk path, etc)
 local.properties
