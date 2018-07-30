@@ -31,8 +31,6 @@ public class NodeCachingLinkedListTests {
 		assertThat("verificando que el elemento es contenido en la lista", add, is(true)); // Assert
 		assertThat("verificando que el elemento es contenido en la lista", list.contains(new Integer(4)), is(true)); // Assert
 		assertThat("verificando que el elemento es contenido en la lista", newMC, is(oldMC+1)); // Assert
-		assertThat("verificando que el elemento es contenido en la lista", newMC, is(oldMC+1)); // Assert
-
 	}
 	
 	//Se chequea en Add Size y Cache Size ademas de que si el elemento se agrega correctamente (podria haber otro elemento con el mismo valor)
@@ -49,7 +47,7 @@ public class NodeCachingLinkedListTests {
 			list.add(new Integer(3));
 			newSize = (int) field.get(list);
 		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-			fail("Error usando refleccion: " + e); // Assert
+			fail("Error usando reflexion: " + e); // Assert
 			e.printStackTrace();
 		}
 		assertThat("verificando que el elemento es contenido en la lista", list.contains(new Integer(3)), is(true)); // Assert
@@ -57,7 +55,7 @@ public class NodeCachingLinkedListTests {
 		assertThat("verificando que si se utilizo la cache en caso de ser posible", list.cacheSize, is(oldCache==0? oldCache : oldCache-1)); // Assert
 	}
 	
-	//Se cheque remove con la lista cache full (es decir el elemento removido no se agrega a cache)
+	//Se chequea remove con la lista cache full (es decir el elemento removido no se agrega a cache)
 	@Theory
 	public void removeElementCacheFull(@NCLLGenerator(min=0,max=3) NodeCachingLinkedList list) {
 		list.add(new Integer(4));
