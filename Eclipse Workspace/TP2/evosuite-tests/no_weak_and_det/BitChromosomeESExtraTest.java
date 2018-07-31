@@ -1,6 +1,7 @@
 package no_weak_and_det;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -114,16 +115,55 @@ public class BitChromosomeESExtraTest {
 		
 	}
 	
-	/*@Test
+	@Test
 	public void test07() {
 		int qty = 3;
         BitVector bitVector = new BitVector(qty);
 		BitChromosome chromosome = new BitChromosome(qty,bitVector);
 		try {
 			chromosome.mutateGen(3);
-		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "The index passed is out of bounds");
+			fail();
+		} catch (ArrayIndexOutOfBoundsException e) {
+			
 		}
-		
-	}*/
+	}
+	
+	@Test
+	public void test08() {
+		int qty = 3;
+        BitVector bitVector = new BitVector(qty);
+		BitChromosome chromosome = new BitChromosome(qty,bitVector);
+		try {
+			Gen gen = chromosome.getGen(1);
+			assertNotNull(gen);
+		} catch (RuntimeException e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public void test09() {
+		int qty = 3;
+        BitVector bitVector = new BitVector(qty);
+		BitChromosome chromosome = new BitChromosome(qty,bitVector);
+		try {
+			BitChromosome chromosome2 = (BitChromosome) chromosome.copyChromosome();
+			assertNotNull(chromosome2);
+		} catch (RuntimeException e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public void test10() {
+		int qty = 5;
+        BitVector bitVector = new BitVector(qty);
+		BitChromosome chromosome = new BitChromosome(qty,bitVector);
+		Gen[] chromosomeSlice = chromosome.getChromosomeSlice(2, 3);
+		try {
+			chromosome.setChromosomeSlice(chromosomeSlice, 2);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			fail();
+		}
+	}
 }
