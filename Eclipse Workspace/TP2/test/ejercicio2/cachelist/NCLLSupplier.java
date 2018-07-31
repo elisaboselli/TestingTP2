@@ -26,11 +26,14 @@ public class NCLLSupplier extends ParameterSupplier {
 	        int i=0;
 	        for (Object s : nclls) {
 	        	i++;
-	        	number = random.nextInt((maxRange - minRange) + 2) + minRange;
 	        	ncll = (NodeCachingLinkedList) s;
-	        	if (number<maxRange) {
-	        		ncll.add(new Integer(number));
-	        	}
+	    		LinkedListNode firstNode = ncll.getNode(0, true);
+	    		//LinkedListNode node;
+	    		for (LinkedListNode node = firstNode; node.next != firstNode; node = node.next) {	
+		        	number = random.nextInt((maxRange - minRange) + 1) + minRange;
+		        	node.setValue(new Integer(number));
+
+	    		}
 	        	values.add(PotentialAssignment.forValue(("lista "+i),ncll));
 	        }
 			return values;
@@ -43,3 +46,4 @@ public class NCLLSupplier extends ParameterSupplier {
 	
 
 }
+	
