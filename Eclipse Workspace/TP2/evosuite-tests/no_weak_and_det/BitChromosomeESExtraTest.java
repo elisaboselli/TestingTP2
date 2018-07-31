@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.Iterator;
+import java.util.Random;
 
 import org.junit.Test;
 
@@ -40,17 +41,17 @@ public class BitChromosomeESExtraTest {
 	@Test
 	public void test02() {
 		int qty = 3;
-		//int seed = 7;
+		int seed = 7;
 		int count = 0;
         BitVector bitVector = new BitVector(qty);
 		BitChromosome chromosome = new BitChromosome(qty,bitVector);
-		//Random rand = new Random(seed);
+		Random rand = new Random(seed);
 		Iterator<Gen> it = chromosome.iterator();
 		while(it.hasNext()) {
-			//Gen gen = (Gen)it.next();
-			//String val = rand.nextBoolean() ? "true" : "false";
-			//assertEquals(gen.getValue(), val);
-			it.next();
+			Gen gen = (Gen)it.next();
+			String val = rand.nextBoolean() ? "true" : "false";
+			assertEquals(gen.getValue(), val);
+			//it.next();
 			count++;
 		}
 		assertEquals(qty, count);
@@ -82,22 +83,6 @@ public class BitChromosomeESExtraTest {
 		}
 	}
 	
-	/*@Test
-	public void test057(){
-		int qty = 6;
-        BitVector bitVector = new BitVector(qty);
-		BitChromosome chromosome = new BitChromosome(qty,bitVector);
-		
-		Iterator<Gen> it = chromosome.iterator();
-		String chr = "[";
-		while(it.hasNext()) {
-			Gen gen = (Gen)it.next();
-			chr += gen.getValue() + ", ";
-		}
-		chr += "]";
-		Gen[] genArray = chromosome.getChromosomeSlice(0, qty);
-	}*/
-	
 	@Test
 	public void test05(){
 		int qty = 6;
@@ -114,4 +99,31 @@ public class BitChromosomeESExtraTest {
 			assertEquals(gen1.toString(), gen2.toString());
 		}
 	}
+	
+	@Test
+	public void test06() {
+		int qty = 3;
+        BitVector bitVector = new BitVector(qty);
+		BitChromosome chromosome = new BitChromosome(qty,bitVector);
+		try {
+			chromosome.mutateGen(0);
+		} catch (RuntimeException e) {
+			assertEquals(e.getMessage(), "The index passed is out of bounds");
+			fail();
+		}
+		
+	}
+	
+	/*@Test
+	public void test07() {
+		int qty = 3;
+        BitVector bitVector = new BitVector(qty);
+		BitChromosome chromosome = new BitChromosome(qty,bitVector);
+		try {
+			chromosome.mutateGen(3);
+		} catch (RuntimeException e) {
+			assertEquals(e.getMessage(), "The index passed is out of bounds");
+		}
+		
+	}*/
 }
