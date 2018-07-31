@@ -186,7 +186,7 @@ public class NodeCachingLinkedListTests {
 			list.add(obj);
 			oldMC = (int) mC.get(list);
 			cacheOld = list.cacheSize;
-			removeOK = list.remove(new Integer(4));
+			removeOK = list.remove(obj);
 			newMC= (int) mC.get(list);
 		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
 			fail("Error usando reflexion: " + e); // Assert
@@ -197,5 +197,41 @@ public class NodeCachingLinkedListTests {
 		assertThat("verificando que el elemento eliminado fue agregado a la cache", list.cacheSize, is(cacheOld+1)); // Assert
 		assertThat("verificando que modCount es modificado", newMC, is(oldMC+1)); // Assert
 	}
+	
+	/* Se realiza un remove de un elemento que pertence a la lista (no solo el valor del objeto si no el objeto en si) 
+	   ademas se agrega un objeto null para cubrir rama de isEqualValue y se chequea que:
+	* el remove se realiza correctamente
+	* el elemento no es mas contenido en la lista
+	* el sizeCache aumenta
+	*/
+	@Theory
+	public void removeElementObjectEqual(@NCLLGenerator(min=0,max=3) NodeCachingLinkedList list) {
+		int cacheOld;
+		boolean removeOK=false;
+		list.add(null);
+		Integer obj = new Integer(4);
+		list.add(obj);
+		cacheOld = list.cacheSize;
+		removeOK = list.remove(obj);
+		assertThat("verificando que el elemento es removido de la lista", removeOK, is(true)); // Assert
+		assertThat("verificando que el elemento no es mas contenido en la lista", list.contains(new Integer(4)), is(false)); // Assert
+		assertThat("verificando que el elemento eliminado fue agregado a la cache", list.cacheSize, is(cacheOld+1)); // Assert
+	}
 
+	/* Se realiza un remove de un elemento NULL
+	* el remove se realiza correctamente
+	* el elemento no es mas contenido en la lista
+	* el sizeCache aumenta
+	*/
+	@Theory
+	public void removeElementNull(@NCLLGenerator(min=0,max=3) NodeCachingLinkedList list) {
+		int cacheOld;
+		boolean removeOK;
+		list.add(null);
+		cacheOld = list.cacheSize;
+		removeOK = list.remove(null);
+		assertThat("verificando que el elemento es removido de la lista", removeOK, is(true)); // Assert
+		assertThat("verificando que el elemento no es mas contenido en la lista", list.contains(null), is(false)); // Assert
+		assertThat("verificando que el elemento eliminado fue agregado a la cache", list.cacheSize, is(cacheOld+1)); // Assert
+	}
 }
