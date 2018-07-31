@@ -408,7 +408,6 @@ public class NodeCachingLinkedList implements Serializable {
 		//if (header == null || header.previous==null || header.next==null) {
 
 		if (header == null || header.previous==null || header.next==null || header.value!=null) {
-			System.out.println("entro");
 			return false;
 		}
 		LinkedListNode nodeBefore = header;
